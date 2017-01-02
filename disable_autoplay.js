@@ -4,16 +4,16 @@
     var disable_autoplay;
     (disable_autoplay = function() {
       var autoplay, chkbox;
-      autoplay = $('div.checkbox-on-off');
-      chkbox = autoplay.find('input');
+      autoplay = $('div.checkbox-on-off, div.ytd-compact-autoplay-renderer');
+      chkbox = autoplay.find('input, paper-toggle-button');
       if ((autoplay != null) && (chkbox != null)) {
-        if (chkbox.is(':checked')) {
+        if (chkbox.attr('checked')) {
           chkbox.click();
         }
         return autoplay.remove();
       }
     })();
-    return $(this).on('spfdone', disable_autoplay);
+    return $(this).on('spfdone yt-navigate-finish viewport-load', disable_autoplay);
   });
 
 }).call(this);
