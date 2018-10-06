@@ -1,7 +1,7 @@
 $ ->
     deleted = false
     do disable_autoplay = -> # Called immediately
-        autoplay = $ 'div.checkbox-on-off, div.ytd-compact-autoplay-renderer'
+        autoplay = $ 'div.checkbox-on-off, div#head.ytd-compact-autoplay-renderer'
         chkbox = autoplay.find 'input, paper-toggle-button'
 
         # May not have been loaded yet, try again
