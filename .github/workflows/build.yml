@@ -27,7 +27,8 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: (cd dist && zip -r ../dist.zip . && cd ..)
-
-    artifacts:
-      paths:
-        - dist.zip
+    - name: Upload build
+      uses: actions/upload-artifact@v3
+      with:
+        name: dist
+        path: dist.zip
