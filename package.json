@@ -1,0 +1,26 @@
+{
+  "name": "remove-youtube-autoplay",
+  "version": "0.1.6",
+  "description": "remove-youtube-autoplay",
+  "scripts": {
+    "watch": "webpack --config webpack/webpack.dev.js --watch",
+    "build": "webpack --config webpack/webpack.prod.js",
+    "clean": "rimraf dist"
+  },
+  "author": "krx",
+  "dependencies": {
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.0.158",
+    "@types/jquery": "^3.5.14",
+    "copy-webpack-plugin": "^9.0.1",
+    "glob": "^7.1.6",
+    "rimraf": "^3.0.2 ",
+    "ts-loader": "^8.0.0",
+    "typescript": "^4.4.3 ",
+    "webpack": "^5.0.0",
+    "webpack-cli": "^4.0.0",
+    "webpack-merge": "^5.0.0"
+  }
+}
