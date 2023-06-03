@@ -1,6 +1,6 @@
 {
   "name": "remove-youtube-autoplay",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "remove-youtube-autoplay",
   "scripts": {
     "watch": "webpack --config webpack/webpack.dev.js --watch",
