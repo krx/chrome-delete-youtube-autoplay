@@ -27,6 +27,9 @@ async function disableAutoplay() {
     if (autoplayToggle.attr('aria-label')?.search(/is on/gi) !== -1) {
         autoplayToggle.trigger('click');
         setTimeout(disableAutoplay, 100);  // Keep retrying until we're sure it's off
+    } else {
+        // disabled now, so delete switch
+        autoplayToggle.remove();
     }
 }
 
