@@ -20,17 +20,22 @@ async function waitForElement(selector: string): Promise<JQuery<HTMLElement>> {
     });
 }
 
-async function disableAutoplay() {
-    const autoplayToggle = await waitForElement('div.ytp-right-controls > button[data-tooltip-target-id="ytp-autonav-toggle-button"]');
-
-    // If autoplay is currently enabled, click the toggle
-    if (autoplayToggle.attr('aria-label')?.search(/is on/gi) !== -1) {
-        autoplayToggle.trigger('click');
-        setTimeout(disableAutoplay, 100);  // Keep retrying until we're sure it's off
-    } else {
-        // disabled now, so delete switch
-        autoplayToggle.remove();
-    }
+function disableAutoplay() {
+    waitForElement('div.ytp-right-controls > button[data-tooltip-target-id="ytp-autonav-toggle-button"]')
+        .then((autoplayToggle) => {
+            // If autoplay is currently enabled, click the toggle
+            if (autoplayToggle.attr('aria-label')?.search(/is on/gi) !== -1) {
+                autoplayToggle.trigger('click');
+                setTimeout(disableAutoplay, 1000);  // Keep retrying until we're sure it's off
+            } else {
+                // disabled now, so delete switch
+                autoplayToggle.remove();
+            }
+        })
+        .catch((err) => {
+            console.log(`Error finding autoplay element: ${err}\nRetrying...`);
+            setTimeout(disableAutoplay, 1000);
+        });
 }
 
 $(() => {
